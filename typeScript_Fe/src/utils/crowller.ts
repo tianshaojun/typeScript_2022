@@ -2,14 +2,14 @@
 import fs from 'fs'
 import path from 'path'
 import superagent from 'superagent'
-import DellAnalyzer from './dellAnalyzer'
+import DellAnalyzer from './Analyzer'
 
 export interface Analyzer {
   analyze: (html: string, filePath: string) => string
 }
 
 class Crowller {
-  private filePath = path.resolve(__dirname, '../data/course.json')
+  private filePath = path.resolve(__dirname, '../../data/course.json')
 
   async getRawHtml() {
     const result = await superagent.get(this.url)
@@ -32,9 +32,3 @@ class Crowller {
 }
 
 export default Crowller
-
-// const secret = 'secretKey'
-// const url = `http://www.dell-lee.com/typescript/demo.html?secret=${secret}`
-
-// const analyzer = new DellAnalyzer()
-// new Crowller(url, analyzer)
